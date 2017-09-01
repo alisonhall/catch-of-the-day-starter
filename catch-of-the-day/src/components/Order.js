@@ -3,12 +3,7 @@ import { formatPrice } from '../helpers';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 
 class Order extends React.Component {
-    constructor() {
-        super();
-        this.renderOrder = this.renderOrder.bind(this);
-    }
-
-    renderOrder(key) {
+    renderOrder = (key) => {
         const fish = this.props.fishes[key];
         const count = this.props.order[key];
         const removeButton = <button onClick={() => this.props.removeFromOrder(key)}>&times;</button>
@@ -36,7 +31,7 @@ class Order extends React.Component {
                 
             </li>
         )
-    }
+    };
 
     render() {
         const orderIds = Object.keys(this.props.order);
@@ -68,12 +63,12 @@ class Order extends React.Component {
             </div>
         )
     }
-}
 
-Order.propTypes = {
-    fishes: React.PropTypes.object.isRequired,
-    order: React.PropTypes.object.isRequired,
-    removeFromOrder: React.PropTypes.func.isRequired
+    static propTypes = {
+        fishes: React.PropTypes.object.isRequired,
+        order: React.PropTypes.object.isRequired,
+        removeFromOrder: React.PropTypes.func.isRequired
+    }
 }
 
 export default Order;
