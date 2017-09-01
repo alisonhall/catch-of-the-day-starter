@@ -7,9 +7,12 @@ import App from './components/App';
 import StorePicker from './components/StorePicker';
 import NotFound from './components/NotFound';
 
+// only works for GitHub Pages
+const repo = `/${window.location.pathname.split('/')[1]}`;
+
 const Root = () => {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename={repo}>
             <div>
                 <Match exactly pattern="/" component={StorePicker} />
                 <Match pattern="/store/:storeId" component={App} />
